@@ -3,29 +3,35 @@ package com.danyele.webapp.entities;
 import jakarta.persistence.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Prodotto")
 public class Prodotto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_prodotti")
     private Long id;
-
     @Column(name = "nome", nullable = false)
     private String nome;
-
     @Column(name = "descrizione", nullable = false)
     private String descrizione;
-
     @Column(name = "prezzo", nullable = false)
     private Double prezzo;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_posizione", nullable = false)
+    private Posizioni posizione;
+
+
     public Prodotto (){};
 
-    public Prodotto(String nome, String descrizione, Double prezzo){
+    public Prodotto(String nome, String descrizione, Double prezzo, Posizioni posizione){
         this.nome=nome;
         this.descrizione=descrizione;
         this.prezzo=prezzo;
+        this.posizione=posizione;
     }
 
 
