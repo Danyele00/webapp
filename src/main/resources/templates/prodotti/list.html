@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Prezzo</th>
+        <th>Azioni</th>
+    </tr>
+    <tr th:each="prodotto : ${prodotti}">
+        <td th:text="${prodotto.id}"></td>
+        <td th:text="${prodotto.nome}"></td>
+        <td th:text="${prodotto.descrizione}"></td>
+        <td th:text="${prodotto.prezzo}"></td>
+        <td>
+            <a th:href="@{/prodotti/show/{id}(id=${prodotto.id})}">Mostra</a>
+            <a th:href="@{/prodotti/edit/{id}(id=${prodotto.id})}">Modifica</a>
+            <a th:href="@{/prodotti/delete/{id}(id=${prodotto.id})}">Elimina</a>
+        </td>
+    </tr>
+</table>
+
+<a th:href="@{/prodotti/create}">Crea un nuovo prodotto</a>
+
+</body>
+</html>

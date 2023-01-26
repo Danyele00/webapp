@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>create</title>
+</head>
+<body>
+<div align="center">
+    <h1>Registrazione Prodotti</h1>
+    <form action="#" th:action ="@{/magazzino/create}" th:object="${prodotto}" method="post">
+        <label> Id_prodotto:</label>
+        <input type="text" th:field="*{id_prodotto}"/><br/>
+
+        <label> nome:</label>
+        <input type="text" th:field="*{prodotto}"/><br/>
+
+        <label> posizione:</label>
+        <input type="text" th:field="*{posizione}"/><br/>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>
