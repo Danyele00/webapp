@@ -1,5 +1,6 @@
 package com.danyele.webapp.controller;
 
+import com.danyele.webapp.entities.Posizioni;
 import com.danyele.webapp.entities.Prodotto;
 import com.danyele.webapp.service.ProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,10 @@ public class ProdottoController {
     }
 
     @PostMapping("/create")
-    public String createProdotto(@ModelAttribute Prodotto prodotto, BindingResult result) {
+    public String createProdotto(@ModelAttribute Prodotto prodotto, @ModelAttribute Posizioni posizioni,BindingResult result) {
         if(result.hasErrors()){
+            System.out.println(result.getModel());
+
             return "prodotti/create";
         }
         prodottoService.save(prodotto);
