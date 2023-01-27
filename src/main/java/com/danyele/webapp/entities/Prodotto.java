@@ -1,9 +1,7 @@
 package com.danyele.webapp.entities;
 
 import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "Prodotto")
@@ -24,16 +22,22 @@ public class Prodotto {
     @JoinColumn(name = "id_posizione", nullable = false)
     private Posizioni posizione;
 
-
     public Prodotto (){};
 
-    public Prodotto(String nome, String descrizione, Double prezzo, Posizioni posizione){
+    public Prodotto(String nome, String descrizione, Double prezzo, Long posizione){
         this.nome=nome;
         this.descrizione=descrizione;
         this.prezzo=prezzo;
-        this.posizione=posizione;
+        this.posizione.setId(posizione);
     }
 
+    public Posizioni getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(Posizioni posizione) {
+        this.posizione = posizione;
+    }
 
     public String getNome() {
         return nome;
