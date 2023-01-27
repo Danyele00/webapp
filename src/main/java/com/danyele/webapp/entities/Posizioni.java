@@ -42,7 +42,4 @@ public class Posizioni {
         this.prodotto = prodotto;
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> dan
